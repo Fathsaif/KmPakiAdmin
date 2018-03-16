@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "448066691228",
+    "firebase_url": "https://km-paki.firebaseio.com",
+    "project_id": "km-paki",
+    "storage_bucket": "km-paki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448066691228:android:7d9549107aa88146",
+        "android_client_info": {
+          "package_name": "com.saif.kmpakiadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448066691228-3arsc0p4pneqhm3o6eq2almr2i6h1344.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saif.kmpakiadmin",
+            "certificate_hash": "eca7f4efea0868cad86a010b78c5e613902f7e21"
+          }
+        },
+        {
+          "client_id": "448066691228-r0q61htlc80hettfp2fi7l5uukvdetn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-3tjiWlCo7mg2IR37VskNAPGcFy5-HeE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448066691228-r0q61htlc80hettfp2fi7l5uukvdetn7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#057b3f</color>
+    <color name="colorPrimaryDark">#025e30</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="text">#212121</color>
+    <color name="days_progress_color">#f69e01</color>
+    <color name="hours_progress_color">#ecf4cf</color>
+    <color name="mins_progress_color">#b0ca44</color>
+    <color name="sec_progress_color">#7d95d4</color>
+</resources>

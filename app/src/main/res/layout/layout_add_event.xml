@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ImageView
+    android:id="@+id/img_event"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    android:src="@drawable/add_image"
+    android:layout_marginTop="@dimen/default_36"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+        android:id="@+id/txt_add_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/img_event"
+        app:layout_constraintRight_toRightOf="@id/img_event"
+        app:layout_constraintLeft_toLeftOf="@id/img_event"
+        android:layout_marginTop="@dimen/default_16"
+        android:textColor="#001aff"
+        android:text="أضف صورة"/>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inpt_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_24"
+        android:layout_marginRight="@dimen/default_24"
+        android:layout_marginTop="@dimen/default_8"
+        android:hint="العنوان"
+        android:background="#b8ffffff"
+        android:textColorHint="#64000000"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_add_image">
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#8a000000"
+            android:textColorHint="#64000000"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/inpt_description"
+        android:hint="نبذة عن الحدث"
+        android:layout_marginTop="@dimen/default_8"
+        android:background="#b8ffffff"
+        android:textColorHint="#64000000"
+        app:layout_constraintTop_toBottomOf="@+id/inpt_item_name"
+        app:layout_constraintRight_toRightOf="@+id/inpt_item_name"
+        app:layout_constraintLeft_toLeftOf="@+id/inpt_item_name">
+
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:textColor="#8a000000"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inpt_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_24"
+        android:layout_marginRight="@dimen/default_24"
+        android:layout_marginTop="@dimen/default_8"
+        android:hint="التاريخ"
+        android:background="#b8ffffff"
+        android:textColorHint="#64000000"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inpt_description">
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:textColor="#8a000000"
+            android:textColorHint="#64000000"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="أصف الى الاحداث"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inpt_phone_number" />
+
+</android.support.constraint.ConstraintLayout>
