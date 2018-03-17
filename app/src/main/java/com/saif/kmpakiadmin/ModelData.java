@@ -1,5 +1,7 @@
 package com.saif.kmpakiadmin;
 
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
@@ -9,73 +11,75 @@ import java.util.Date;
  * Created by Mosaad on 23/11/2017.
  */
 
+@IgnoreExtraProperties
 public class ModelData implements Serializable {
-    int id;
-    String summary;
-    Date startDate;
+    String key;
+    String title;
+    String desc;
     String date;
+    public ModelData(){
 
-    int year;
-    int month;
-    int day;
-
-    public ModelData(int id,String summary, String startDate) {
-        this.summary = summary;
-        date = startDate;
-        this.id= id;
+    }
+    public ModelData(String key, String title, String desc, String date) {
+        this.key = key;
+        this.title = title;
+        this.desc = desc;
+        this.date = date;
     }
 
-    public String getSummary() {
-        return summary;
+    public String getKey() {
+        return key;
     }
 
-    public void setSummary(String summary) {
-        this.summary = summary;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getTitle() {
+        return title;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getYear() {
         return Integer.parseInt(date.substring(0, 4));
     }
 
-    public void setYear(int year) {
-
-        this.year = year;
-    }
 
     public int getMonth() {
         return Integer.parseInt(date.substring(5, 7));
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
     }
 
     public int getDay() {
         return Integer.parseInt(date.substring(8, 10));
     }
 
-    public void setDay(int day) {
-        this.day = day;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public static ModelData fromJson(String json){
-        return new Gson().fromJson(json,ModelData.class);
+    @Override
+    public String toString() {
+        return "ModelData{" +
+                "key='" + key + '\'' +
+                ", title='" + title + '\'' +
+                ", desc='" + desc + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 
 }

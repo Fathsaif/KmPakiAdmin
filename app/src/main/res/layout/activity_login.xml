@@ -10,15 +10,16 @@
         android:id="@+id/inpt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="user name"
+        android:hint="اسم المستخدم"
         android:layout_marginTop="@dimen/default_16"
         android:layout_marginRight="@dimen/default_16"
         android:layout_marginLeft="@dimen/default_16"
+        android:gravity="right"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/default_48"
+        android:layout_marginBottom="@dimen/default_72"
         >
         <EditText
             android:id="@+id/et_email"
@@ -26,7 +27,6 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/default_8"
             android:drawablePadding="@dimen/default_8"
-            android:inputType="textEmailAddress"
             android:textStyle="normal"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -34,7 +34,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/inpt_password"
-        android:hint="password"
+        android:hint="كلمة المرور"
         android:layout_marginTop="@dimen/default_4"
         app:layout_constraintTop_toBottomOf="@+id/inpt_email"
         app:layout_constraintRight_toRightOf="@+id/inpt_email"
@@ -51,13 +51,16 @@
     </android.support.design.widget.TextInputLayout>
     <Button
         android:id="@+id/btn_signin"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:includeFontPadding="false"
-        android:text="login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="دخول"
         android:onClick="login"
+        app:layout_constraintRight_toRightOf="@+id/inpt_email"
+        app:layout_constraintLeft_toLeftOf="@+id/inpt_email"
+        android:layout_marginTop="@dimen/default_36"
+        android:background="@color/colorPrimary"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/inpt_password"
         android:textColor="@android:color/white"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         />
 </android.support.constraint.ConstraintLayout>

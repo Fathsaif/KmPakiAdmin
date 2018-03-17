@@ -46,8 +46,8 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.viewHolder> {
     @Override
     public void onBindViewHolder(viewHolder holder, int position) {
         ModelData book = data.get(position);
-        holder.title.setText(book.getSummary());
-        Log.d("saifbook",book.date+"/"+book.getSummary()+"/"+book.getId());
+        holder.title.setText(book.getTitle());
+        Log.d("saifbook",book.getYear()+"/"+book.getMonth()+""+book.getDay());
         calendar.set(book.getYear(),book.getMonth(),book.getDay(),00,00,00);
         holder.timer(((calendar.getTimeInMillis())-(startCalendar.getTimeInMillis()))-TimeUnit.DAYS.toMillis(31));
         long j = calendar.getTimeInMillis()-startCalendar.getTimeInMillis();
@@ -112,6 +112,9 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.viewHolder> {
             }.start();
         }
     }
-
+    public void add(ModelData modelData){
+        data.add(modelData);
+        notifyDataSetChanged();
+    }
 
 }
