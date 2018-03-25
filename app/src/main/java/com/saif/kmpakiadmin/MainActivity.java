@@ -42,7 +42,7 @@ import java.util.TimeZone;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TimeAdapter.TodoItemEditListener {
     private static final int PICK_ITEM_IMAGE = 113;
     public static final String TAG = "admin-tag";
     @BindView(R.id.flipper)
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database;
     ArrayList<ModelData> events = new ArrayList<>();
     TimeAdapter timeAdapter;
+    boolean isEdit = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         eventRef = database.getReference();
         calendar = Calendar.getInstance();
-
         Log.d("event",eventRef.child("events").push()+"");
         eventRef.child("events").addChildEventListener(new ChildEventListener() {
             @Override
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 ModelData event = dataSnapshot.getValue(ModelData.class);
                 events.add(event);
                 Log.d(TAG+"data",dataSnapshot.toString()+"/size"+events.size());
-                timeAdapter = new TimeAdapter(events,MainActivity.this);
+                timeAdapter = new TimeAdapter(events,MainActivity.this,MainActivity.this);
                 eventsRv.setAdapter(timeAdapter);
             }
 
@@ -289,4 +289,14 @@ public class MainActivity extends AppCompatActivity {
         timePickerDialog.show();
     }
 
+    @Override
+    public void itemClicked(int position) {
+        ModelData event = events.get(position);
+        viewFlipper.setDisplayedChild(1);
+        itemNameInpt.getEditText().setText(event.getTitle());
+        descriptionInpt.getEditText().setText(event.getDesc());
+        dateInpt.setText(event.getDate());
+        sendBtn.setText("حفظ التغيرات");
+
+    }
 }

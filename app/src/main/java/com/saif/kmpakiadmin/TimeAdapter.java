@@ -1,12 +1,15 @@
 package com.saif.kmpakiadmin;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
@@ -28,11 +31,13 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.viewHolder> {
     Calendar calendar;
     Calendar startCalendar;
     private CountDownTimer countDownTimer;
+    private TodoItemEditListener mItemListner;
 
-    public TimeAdapter(ArrayList<ModelData> data, Context mContext) {
+
+    public TimeAdapter(ArrayList<ModelData> data, Context mContext,TodoItemEditListener mItemListner) {
         this.data = data;
         this.mContext = mContext;
-
+        this.mItemListner = mItemListner;
     }
 
     @Override
@@ -77,6 +82,34 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.viewHolder> {
         public viewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    String[] items = {"Edit","Delete"};
+                    try {
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext
+                                , android.R.layout.simple_list_item_1, android.R.id.text1, items);
+
+                        new AlertDialog.Builder(mContext)
+                                .setAdapter(adapter, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if (i==1){
+                                            dialogInterface.dismiss();
+                                            deleteDialog(getAdapterPosition());
+                                        }
+                                        else {
+                                            mItemListner.itemClicked(getAdapterPosition());
+                                        }
+                                    }
+                                    {
+                                    }
+                                })
+                                .show();
+                    }catch (Exception e){e.printStackTrace();}
+                    return true;
+                }
+            });
         }
         public void timer(long milisecond){
             countDownTimer = new CountDownTimer(milisecond,1000) {
@@ -116,5 +149,30 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.viewHolder> {
         data.add(modelData);
         notifyDataSetChanged();
     }
+    private void deleteDialog(final int position) {
 
+        AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+        alert.setMessage("Are you sure you want to delete this task?");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                data.remove(position);
+                notifyDataSetChanged();
+            }
+
+        });
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+            }
+        });
+        alert.create();
+        alert.show();
+    }
+    public interface TodoItemEditListener {
+        void itemClicked(int position);
+
+    }
 }
